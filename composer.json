@@ -1,0 +1,15 @@
+{
+  "name": "acgrid/link-db",
+  "description": "Structured links collection",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php-di/slim-bridge": "^1.0",
+    "slim/twig-view": "^2.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "AutoForm\\": "src/"
+    }
+  }
+}

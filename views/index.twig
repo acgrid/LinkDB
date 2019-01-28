@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>LinkDB</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<h1>LinkDB service</h1>
+{% verbatim %}
+    <div id="app">
+        <form method="get">
+            <p><label for="collection">Collection</label><input type="number" v-model="collection" id="collection" style="width: 3em" v-on:keyup="search" /></p>
+            <p><label for="key">Exact Key</label><input type="text" v-model.trim="key" id="key" size="8" v-on:keyup="search" /> or </p>
+            <p><label for="name">Keyword</label><input type="search" v-model.trim="name" id="name" size="50" v-on:keyup="search" />.</p>
+        </form>
+        <ul>
+            <li v-for="item in items" :key="item.key">
+                <b>{{ item.name }}</b>
+                <button v-bind:value="item.key" v-on:click="load">LOAD {{ item.key }}</button>
+                <ol><li v-for="link in item.links">{{ link }}</li></ol>
+            </li>
+        </ul>
+    </div>
+{% endverbatim %}
+<dl>
+    <dt>Collection</dt><dd>{{ collections }}</dd>
+    <dt>Items</dt><dd>{{ items }}</dd>
+    <dt>Links</dt><dd>{{ links }}</dd>
+</dl>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
